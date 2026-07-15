@@ -12,9 +12,11 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun main() {
+    val port = System.getenv("PORT")?.toIntOrNull() ?: 8080
+
     embeddedServer(
         Netty,
-        port = 8080,
+        port = port,
         host = "0.0.0.0",
         module = Application::module
     ).start(wait = true)
@@ -31,7 +33,7 @@ fun Application.module() {
     routing {
 
         get("/") {
-            call.respondText("UniLink API funcionando")
+            call.respondText("UniLink API se encuentra funcionando")
         }
     }
 
